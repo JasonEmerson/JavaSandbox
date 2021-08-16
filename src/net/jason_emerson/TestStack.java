@@ -2,7 +2,7 @@ package net.jason_emerson;
 
 public class TestStack {
     public static void main(String[] args) {
-        Stack stack = new Stack();
+        Stack stack = new Stack(20);
 
         for (int i = 0; i < 10; i++) {
             stack.push(i);
@@ -22,10 +22,10 @@ public class TestStack {
     }
 
     public static void printStack(Stack stack) {
-        System.out.println("Stack size = " + stack.size);
+        System.out.println("Stack size = " + stack.maxSize);
         System.out.println("Stack count = " + stack.top);
-        for (int i = 0; i < stack.size; i++) {
-            System.out.print("[" + stack.array[i] + "] ");
+        for (int i = 0; i < stack.maxSize; i++) {
+            System.out.print("[" + stack.stackArray[i] + "] ");
         }
         System.out.println();
         System.out.println();
