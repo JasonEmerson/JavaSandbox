@@ -5,20 +5,21 @@ import java.util.List;
 
 public class PrimeCheck {
     public static void main(String[] args) {
-
-        List<Integer> pList  = primeList(100);
+        List<Integer> pList  = getPrimeList(100);
         List<Integer> pFactors = new ArrayList<>();
-        System.out.println(findPrimeFactors(pList, pFactors, 21));
-//        ----------------------------------------------------------
-//        System.out.println(pList);
-//        int[] arr = {61,71,83,88,97};
-//        System.out.println(primeCheck(97));
+        int[] arr = {13,23,33};
+        int FIND_FACTOR = 77;
+//  --------------------------------------------------------------------------
+        System.out.println(findPrimeFactors(pList, pFactors, FIND_FACTOR));
+//  --------------------------------------------------------------------------
+        isPrimeSet(arr);
+//  --------------------------------------------------------------------------
+    }
 
-//        for(int i = 0; i < arr.length; i++) {
-//            System.out.println(arr[i] + " = " + compositeCheck(arr[i]));
-//        }
-
-
+    public static void isPrimeSet(int[] arr) {
+        for(int i = 0; i < arr.length; i++) {
+            System.out.println(arr[i] + " = " + isPrime(arr[i]));
+        }
     }
 
     public static List<Integer> findPrimeFactors(List<Integer> pList, List<Integer> pFactors, int n) {
@@ -30,10 +31,6 @@ public class PrimeCheck {
         }
         return pFactors;
     }
-
-
-
-
 
     public static boolean isPrime(int n) {
         if(n == 1) return false;
@@ -53,14 +50,12 @@ public class PrimeCheck {
         return false;
     }
 
-    public static ArrayList<Integer> primeList(int num) {
+    public static ArrayList<Integer> getPrimeList(int num) {
         ArrayList<Integer> pList = new ArrayList<>();
         for(int i = 2; i < num; i++) {
-            if (isPrime(i)) pList.add(i);
+            if (isPrime(i))
+                pList.add(i);
         }
         return pList;
     }
-
-
-
 }
