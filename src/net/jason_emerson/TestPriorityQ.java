@@ -7,8 +7,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 
 public class TestPriorityQ {
-    public static void main(String[] args) throws IOException
-    {
+    public static void main(String[] args) throws IOException {
         int value, value2;
         PriorityQBinaryHeap theHeap = new PriorityQBinaryHeap(31);
         boolean success;
@@ -29,8 +28,7 @@ public class TestPriorityQ {
             System.out.print("Enter first letter of ");
             System.out.print("show, insert, remove, change: ");
             int choice = getChar();
-            switch(choice)
-            {
+            switch(choice) {
                 case 's':
                     theHeap.displayHeap();
                     break;
@@ -39,13 +37,13 @@ public class TestPriorityQ {
                     value = getInt();
                     success = theHeap.insert(value);
                     if( !success )
-                        System.out.println("Can’t insert; heap full");
+                        System.out.println("Can't insert; heap full");
                     break;
                 case 'r':
                     if( !theHeap.isEmpty() )
                         theHeap.remove();
                     else
-                        System.out.println("Can’t remove; heap empty");
+                        System.out.println("Can't remove; heap empty");
                     break;
                 case 'c':
                     System.out.print("Enter current index of item: ");
