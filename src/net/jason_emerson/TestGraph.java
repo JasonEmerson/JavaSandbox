@@ -13,8 +13,11 @@ public class TestGraph {
         theGraph.addEdge(1, 2); // BC
         theGraph.addEdge(0, 3); // AD
         theGraph.addEdge(3, 4); // DE
-        System.out.print("Visits: ");
-        theGraph.dfs(); // depth-first search
+        System.out.print("DFS visits: ");
+        theGraph.dfs();
+        System.out.println();
+        System.out.print("BFS visits: ");
+        theGraph.bfs();
         System.out.println();
     }
 }

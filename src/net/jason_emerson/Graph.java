@@ -6,6 +6,7 @@ public class Graph {
     private int adjMat[][];
     private int nVerts;
     private Stack theStack;
+    private Queue theQueue;
 
     public Graph() {
         vertexList = new Vertex[MAX_VERTS];
@@ -15,6 +16,7 @@ public class Graph {
             for(int k=0; k<MAX_VERTS; k++)
                 adjMat[j][k] = 0;
         theStack = new Stack(MAX_VERTS);
+        theQueue = new Queue(MAX_VERTS);
     }
 
     public void addVertex(char lab) {
@@ -44,8 +46,28 @@ public class Graph {
                 theStack.push(v);
             }
         }
-        for(int j=0; j<nVerts; j++)
-            vertexList[j].wasVisited = false;
+        resetVisited();
+    }
+
+    public void bfs() {
+        vertexList[0].wasVisited = true;
+        displayVertex(0);
+        theQueue.insert(0);
+        int v2;
+        while( !theQueue.isEmpty() ) {
+            int v1 = theQueue.remove();
+            while((v2 = getAdjUnvisitedVertex(v1)) != -1) {
+                vertexList[v2].wasVisited = true;
+                displayVertex(v2);
+                theQueue.insert(v2);
+            }
+        }
+        resetVisited();
+    }
+
+    public void resetVisited() {
+        for(int i=0; i < nVerts; i++)
+            vertexList[i].wasVisited = false;
     }
 
    public int getAdjUnvisitedVertex(int v) {
