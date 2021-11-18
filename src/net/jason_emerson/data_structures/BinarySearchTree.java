@@ -34,8 +34,7 @@ public class BinarySearchTree {
             if(current.key > key) {
                 parent = current;
                 current = current.leftChild;
-            }
-            else if (current.key < key) {
+            } else {
                 parent = current;
                 current = current.rightChild;
             }

@@ -2,12 +2,12 @@ package net.jason_emerson.data_structures;
 
 public class Trie {
     private final int ALPHABET_SIZE = 26;
-    public TrieNode root = new TrieNode();
+    public Node root = new Node();
 
     public void insert(String key) {
 //        System.out.print("Inserting: ");
 
-        TrieNode current = root;
+        Node current = root;
         int level;
         int length = key.length();
         int index;
@@ -16,7 +16,7 @@ public class Trie {
             index = key.charAt(level) - 'a';
 //            System.out.print(key.charAt(level) + " ");
             if (current.children[index] == null)
-                current.children[index] = new TrieNode();
+                current.children[index] = new Node();
             current = current.children[index];
         }
         current.isEndOfWord = true;
@@ -27,7 +27,7 @@ public class Trie {
 //        System.out.println();
 //        System.out.print("Searching: ");
 
-        TrieNode current = root;
+        Node current = root;
         int level;
         int length = key.length();
         int index;
@@ -42,11 +42,11 @@ public class Trie {
         return (current.isEndOfWord);
     }
 
-    public class TrieNode {
-        TrieNode[] children = new TrieNode[ALPHABET_SIZE];
+    public class Node {
+        Node[] children = new Node[ALPHABET_SIZE];
         boolean isEndOfWord;
 
-        TrieNode() {
+        Node() {
             isEndOfWord = false;
             for (int i = 0; i < ALPHABET_SIZE; i++)
                 children[i] = null;

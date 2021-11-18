@@ -2,10 +2,10 @@ package net.jason_emerson.data_structures;
 
 public class Queue {
     private int maxSize;
-    private int[] queArray;
-    private int front;
-    private int rear;
-    private int count;
+    public int[] queArray;
+    public int front;
+    public int rear;
+    public int count;
 
     public Queue(int size) {
         maxSize = size;
@@ -15,7 +15,7 @@ public class Queue {
         count = 0;
     }
 
-    public void insert(int data) {
+    public void add(int data) {
         if(rear == maxSize - 1)
             rear = -1;
         queArray[++rear] = data;

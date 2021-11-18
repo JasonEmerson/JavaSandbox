@@ -1,38 +1,54 @@
 package net.jason_emerson.test_classes;
-import net.jason_emerson.dailies.DynamicArrayDaily;
+
+import net.jason_emerson.dailies.ArrayListDaily;
+
 
 public class TestDynamicArray {
     public static void main(String[] args) {
-        DynamicArrayDaily arrayList = new DynamicArrayDaily();
+        ArrayListDaily arrayList = new ArrayListDaily();
 
-        arrayList.insert(10);
-        arrayList.printArray();
-        arrayList.insert(20);
-        arrayList.printArray();
-        arrayList.insert(30);
-        arrayList.printArray();
-        arrayList.insert(40);
-        arrayList.printArray();
-        arrayList.insert(50);
-        arrayList.printArray();
+        System.out.println("Adding data to list: ");
+        arrayList.add(10);
+        printArray(arrayList.list);
+        arrayList.add(20);
+        printArray(arrayList.list);
+        arrayList.add(30);
+        printArray(arrayList.list);
+        arrayList.add(40);
+        printArray(arrayList.list);
+        arrayList.add(50);
+        printArray(arrayList.list);
 
+        System.out.println("\nDeleting at index 0, 1, 2: ");
+        printArray(arrayList.list);
+        System.out.println();
         arrayList.deleteAt(0);
-        arrayList.printArray();
+        printArray(arrayList.list);
         arrayList.deleteAt(1);
-        arrayList.printArray();
+        printArray(arrayList.list);
         arrayList.deleteAt(2);
-        arrayList.printArray();
+        printArray(arrayList.list);
 
-        arrayList.insertAt(0, 42);
-        arrayList.printArray();
+        System.out.println("\nAdding 42 to index 0: ");
+        printArray(arrayList.list);
+        arrayList.addAt(0, 42);
+        printArray(arrayList.list);
 
+        System.out.println("\ndeleting: ");
+        System.out.println("count = " + arrayList.count);
+        printArray(arrayList.list);
         arrayList.delete();
-        arrayList.printArray();
+        printArray(arrayList.list);
         arrayList.delete();
-        arrayList.printArray();
+        printArray(arrayList.list);
         arrayList.delete();
-        arrayList.printArray();
-        arrayList.delete();
-        arrayList.printArray();
+        printArray(arrayList.list);
+    }
+    
+    public static void printArray(int[] arr) {
+        for (int n : arr) {
+            System.out.print(n + " ");
+        }
+        System.out.println();
     }
 }

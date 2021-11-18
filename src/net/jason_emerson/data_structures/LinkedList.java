@@ -1,7 +1,5 @@
 package net.jason_emerson.data_structures;
 
-import net.jason_emerson.dailies.LinkedListDaily;
-
 public class LinkedList {
     public Node head;
 
@@ -29,7 +27,6 @@ public class LinkedList {
             head = head.next;
             return;
         }
-
         Node current = head;
         while (current.next != null) {
             if (current.next.data == data) {
@@ -38,6 +35,19 @@ public class LinkedList {
             }
             current = current.next;
         }
+    }
+
+    public void reverse() {
+        Node prev = null;
+        Node current = head;
+        Node next;
+        while (current != null) {
+            next = current.next;
+            current.next = prev;
+            prev = current;
+            current = next;
+        }
+        head = prev;
     }
 
     public void printList() {

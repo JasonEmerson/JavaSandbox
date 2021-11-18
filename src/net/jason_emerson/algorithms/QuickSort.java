@@ -2,8 +2,6 @@ package net.jason_emerson.algorithms;
 
 public class QuickSort {
 
-    public int indexCheck = 0;
-
     public void sort(int[] arr, int start, int end) {
         if (start == end) return;
 

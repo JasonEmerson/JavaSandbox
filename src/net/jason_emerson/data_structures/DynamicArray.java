@@ -1,9 +1,5 @@
 package net.jason_emerson.data_structures;
 
-
-
-
-
 public class DynamicArray {
 
     private int[] array;
@@ -16,18 +12,17 @@ public class DynamicArray {
         count = 0;
     }
 
-    public void add(int num) {
+    public void add(int data) {
         if(count == size) increaseSize();
-        array[count] = num;
-        count++;
+        array[count++] = data;
     }
 
-    public void addAt(int index, int num) {
+    public void addAt(int index, int data) {
         if(count == size) increaseSize();
         for(int i = count - 1; i >= index; i--) {
             array[i + 1] = array[i];
         }
-        array[index] = num;
+        array[index] = data;
         count++;
     }
 

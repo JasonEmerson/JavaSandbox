@@ -52,14 +52,14 @@ public class Graph {
     public void bfs() {
         vertexList[0].wasVisited = true;
         displayVertex(0);
-        theQueue.insert(0);
+        theQueue.add(0);
         int v2;
         while( !theQueue.isEmpty() ) {
             int v1 = theQueue.remove();
             while((v2 = getAdjUnvisitedVertex(v1)) != -1) {
                 vertexList[v2].wasVisited = true;
                 displayVertex(v2);
-                theQueue.insert(v2);
+                theQueue.add(v2);
             }
         }
         resetVisited();
@@ -71,8 +71,8 @@ public class Graph {
     }
 
     private int getAdjUnvisitedVertex(int v) {
-        for(int j = 0; j< vCount; j++)
-            if(adjMat[v][j]==1 && vertexList[j].wasVisited == false)
+        for(int j = 0; j < vCount; j++)
+            if(adjMat[v][j] == 1 && vertexList[j].wasVisited == false)
                 return j;
         return -1;
     }
