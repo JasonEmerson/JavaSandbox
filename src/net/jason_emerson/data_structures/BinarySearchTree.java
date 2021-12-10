@@ -11,9 +11,9 @@ public class BinarySearchTree {
         Node current = root;
         while(current.key != key) {
             if(key < current.key)
-                current = current.leftChild;
+                current = current.left;
             else
-                current = current.rightChild;
+                current = current.right;
             if(current == null)
                 return null;
         }
@@ -33,16 +33,16 @@ public class BinarySearchTree {
         while (current != null) {
             if(current.key > key) {
                 parent = current;
-                current = current.leftChild;
+                current = current.left;
             } else {
                 parent = current;
-                current = current.rightChild;
+                current = current.right;
             }
         }
         if (parent.key > key)
-            parent.leftChild = newNode;
+            parent.left = newNode;
         else
-            parent.rightChild = newNode;
+            parent.right = newNode;
     }
 
     public boolean delete(int key) {
@@ -53,48 +53,48 @@ public class BinarySearchTree {
             parent = current;
             if (key < current.key) {
                 isLeftChild = true;
-                current = current.leftChild;
+                current = current.left;
             } else {
                 isLeftChild = false;
-                current = current.rightChild;
+                current = current.right;
             }
             if (current == null)
                 return false;
         }
         //current == node to be deleted
-        if (current.leftChild == null && current.rightChild == null) { //node to delete has no children
+        if (current.left == null && current.right == null) { //node to delete has no children
             if (current == root)
                 root = null;
             else if (isLeftChild)
-                parent.leftChild = null;
+                parent.left = null;
             else
-                parent.rightChild = null;
-        } else if (current.rightChild == null)//<----------has left child
+                parent.right = null;
+        } else if (current.right == null)//<----------has left child
             if (current == root)
-                root = current.leftChild;
+                root = current.left;
             else if (isLeftChild)
-                parent.leftChild = current.leftChild;
+                parent.left = current.left;
             else
-                parent.rightChild = current.leftChild;
+                parent.right = current.left;
 
-        else if (current.leftChild == null)//<-------------has right child
+        else if (current.left == null)//<-------------has right child
             if (current == root)
-                root = current.rightChild;
+                root = current.right;
             else if (isLeftChild)
-                parent.leftChild = current.rightChild;
+                parent.left = current.right;
             else
-                parent.rightChild = current.rightChild;
+                parent.right = current.right;
         else {//<------------------------------------------has two children
             Node successor = getSuccessor(current);
 
             if (current == root)
                 root = successor;
             else if (isLeftChild)
-                parent.leftChild = successor;
+                parent.left = successor;
             else
-                parent.rightChild = successor;
+                parent.right = successor;
 
-            successor.leftChild = current.leftChild;
+            successor.left = current.left;
         }
         return true;
     }
@@ -103,16 +103,16 @@ public class BinarySearchTree {
     private Node getSuccessor(Node delNode) {
         Node successorParent = delNode;
         Node successor = delNode;
-        Node current = delNode.rightChild;
+        Node current = delNode.right;
         while(current != null) { 
             successorParent = successor;
             successor = current;
-            current = current.leftChild; 
+            current = current.left;
         }
 
-        if(successor != delNode.rightChild) { 
-            successorParent.leftChild = successor.rightChild;
-            successor.rightChild = delNode.rightChild;
+        if(successor != delNode.right) {
+            successorParent.left = successor.right;
+            successor.right = delNode.right;
         }
         return successor;
     }
@@ -120,8 +120,8 @@ public class BinarySearchTree {
     public static class Node {
         public int key;
         public double data;
-        public Node leftChild;
-        public Node rightChild;
+        public Node left;
+        public Node right;
 
         public void displayNode() {
             System.out.print('{');
@@ -154,23 +154,23 @@ public class BinarySearchTree {
     private void preOrder(Node localRoot) {
         if(localRoot != null) {
             System.out.print(localRoot.key + " ");
-            preOrder(localRoot.leftChild);
-            preOrder(localRoot.rightChild);
+            preOrder(localRoot.left);
+            preOrder(localRoot.right);
         }
     }
 
     private void inOrder(Node localRoot) {
         if(localRoot != null) {
-            inOrder(localRoot.leftChild);
+            inOrder(localRoot.left);
             System.out.print(localRoot.key + " ");
-            inOrder(localRoot.rightChild);
+            inOrder(localRoot.right);
         }
     }
 
     private void postOrder(Node localRoot) {
         if(localRoot != null) {
-            postOrder(localRoot.leftChild);
-            postOrder(localRoot.rightChild);
+            postOrder(localRoot.left);
+            postOrder(localRoot.right);
             System.out.print(localRoot.key + " ");
 
 
@@ -184,12 +184,12 @@ public class BinarySearchTree {
             Node temp = queue.poll();
             temp.displayNode();
 
-            if (temp.leftChild != null) {
-                queue.add(temp.leftChild);
+            if (temp.left != null) {
+                queue.add(temp.left);
             }
 
-            if (temp.rightChild != null) {
-                queue.add(temp.rightChild);
+            if (temp.right != null) {
+                queue.add(temp.right);
             }
         }
     }
@@ -210,10 +210,10 @@ public class BinarySearchTree {
                 Node temp = (Node)globalStack.pop();
                 if(temp != null) {
                     System.out.print(temp.key);
-                    localStack.push(temp.leftChild);
-                    localStack.push(temp.rightChild);
-                    if(temp.leftChild != null ||
-                            temp.rightChild != null)
+                    localStack.push(temp.left);
+                    localStack.push(temp.right);
+                    if(temp.left != null ||
+                            temp.right != null)
                         isRowEmpty = false;
                 }
                 else {
